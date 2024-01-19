@@ -1,1 +1,2 @@
 Remove this text and paste your JSON results from the Directions API
+https://maps.googleapis.com/maps/api/directions/json?origin=Lindsay+ON&avoid=highways|tolls&destination=Ottawa+ON&waypoints=Kingston+ON&key=AIzaSyCM-WWHYHIKY-do4kquMy9Z4wQaQx51AuE
