@@ -72,12 +72,24 @@ const tourStops = [
     { lat: 10.790423167968116, lng: 79.13814330550649 },
     { lat: 11.663474335755046, lng:78.14859333386119},
   ];
+  const lineSymbol = {
+    path: "M 0,-1 0,1",
+    strokeOpacity: 1,
+    scale: 4,
+  };
   const lines = new google.maps.Polyline({
     path: Coordinates,
     geodesic: true,
-    strokeColor:"black",
-    strokeOpacity: 1.0,
-    strokeWeight: 2,
+   
+    strokeOpacity: 0,
+    icons: [
+        {
+        icon: lineSymbol,
+        offset: "0",
+        repeat: "20px",
+        }
+    ],
+    map: map,
   });
 
   lines.setMap(map);
