@@ -72,6 +72,18 @@ const tourStops = [
     { lat: 10.790423167968116, lng: 79.13814330550649 },
     { lat: 11.663474335755046, lng:78.14859333386119},
   ];
+  // Construct the polygon.
+  const bermudaTriangle = new google.maps.Polygon({
+    paths: Coordinates,
+    strokeColor: "#FF0000",
+    strokeOpacity: 0.8,
+    strokeWeight: 3,
+    fillColor: "#FF0000",
+    fillOpacity: 0.35,
+  });
+
+  bermudaTriangle.setMap(map);
+  
   const lineSymbol = {
     path: "M 0,-1 0,1",
     strokeOpacity: 1,
