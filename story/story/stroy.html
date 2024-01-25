@@ -37,10 +37,8 @@
     }
   );
 
-//   const Marker1 = ({
-//     position: { lat: 8.494668809583088, lng: 78.12197193442711},map
-//   })
-const tourStops = [
+
+const fieldvisits = [
     {
         position:{lat: 9.592043965227356,  lng: 76.52209451394903},
         title:"Starting from my hometown",
@@ -71,18 +69,20 @@ const tourStops = [
     { lat: 9.179506134516835, lng: 79.41771963035366 },
     { lat: 10.790423167968116, lng: 79.13814330550649 },
     { lat: 11.663474335755046, lng:78.14859333386119},
+    {lat: 9.592043965227356,  lng: 76.52209451394903},
   ];
   // Construct the polygon.
-  const bermudaTriangle = new google.maps.Polygon({
+  const connector = new google.maps.Polygon({
     paths: Coordinates,
+    
     strokeColor: "#FF0000",
     strokeOpacity: 0.8,
     strokeWeight: 3,
-    fillColor: "#FF0000",
+    fillColor: "white",
     fillOpacity: 0.35,
   });
 
-  bermudaTriangle.setMap(map);
+  connector.setMap(map);
   
   const lineSymbol = {
     path: "M 0,-1 0,1",
@@ -110,7 +110,7 @@ const tourStops = [
   const infoWindow = new InfoWindow();
 
   // Create the markers.
-  tourStops.forEach(({ position, title }, i) => {
+ fieldvisits.forEach(({ position, title }, i) => {
     const pin = new PinElement({
       glyph: `${i + 1}`,
     });
@@ -146,3 +146,4 @@ const tourStops = [
     </script>
   </body>
 </html>
+    
