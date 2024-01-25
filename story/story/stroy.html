@@ -1,19 +1,17 @@
 <!DOCTYPE html>
 <!-- source: https://developers.google.com/maps/documentation/javascript/overview#maps_map_simple-html -->
-<!-- STUDENTS: Modify this file to provided the Google API key to get it working, 
-               then modify the lat and lng and zoom to point to a place you know  -->
+<!--template is copied from the sample provided in the gtihub-->
 <html>
   <head>
     <title>Simple Map</title>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
     <style>
-      /* Always set the map height explicitly to define the size of the div
-       * element that contains the map. */
+      /* CSS for the map starts */
         #map {
           height: 100%;
         }
 
-        /* Optional: Makes the sample page fill the window. */
+        /*  Makes the map fill the window */
         html,
         body {
           height: 100%;
@@ -21,6 +19,7 @@
           padding: 0;
         }
     </style>
+    <!--java script for the map starts-->
     <script>
     async function initMap()  {
         const { Map, InfoWindow } = await google.maps.importLibrary("maps");
@@ -37,32 +36,32 @@
     }
   );
 
-
+// coordinates of the places to add markers//
 const fieldvisits = [
     {
         position:{lat: 9.592043965227356,  lng: 76.52209451394903},
-        title:"Starting from my hometown",
+        title:"Kottayam(My Home Town)Started my journey on 11/11/2022",
     },
     {
       position: { lat: 8.494668809583088, lng: 78.12197193442711 },
-      title: "Stayed for 2 days",
+      title: "Reached Thiruchendur on next day and explored the badland topography for two days.",
     },
     {
       position: { lat: 9.179506134516835, lng: 79.41771963035366 },
-      title: "Hault for one day",
+      title: "Stayed in Dhanushkodi for three days exploring the coastal terrain",
     },
     {
       position: { lat: 10.790423167968116, lng: 79.13814330550649 },
-      title: "Explored the city as a leisure",
+      title: "Explored Thanjavur city as a leisure and stayed there for two days",
     },
     
     {
       position: { lat: 11.663474335755046, lng:78.14859333386119 },
-      title: "Final destination for the field work",
+      title: "Salem:Final destination of the field visit-explored for 4 days",
     },
   ];
 
-
+//coordinates of the places to add the polygon and polyline//
   const Coordinates = [
     {lat: 9.592043965227356,  lng: 76.52209451394903 },
     { lat: 8.494668809583088, lng: 78.12197193442711},
@@ -71,7 +70,7 @@ const fieldvisits = [
     { lat: 11.663474335755046, lng:78.14859333386119},
     {lat: 9.592043965227356,  lng: 76.52209451394903},
   ];
-  // Construct the polygon.
+  // Construct the polygon//
   const connector = new google.maps.Polygon({
     paths: Coordinates,
     
@@ -83,7 +82,7 @@ const fieldvisits = [
   });
 
   connector.setMap(map);
-  
+  //adding  dashed lines//
   const lineSymbol = {
     path: "M 0,-1 0,1",
     strokeOpacity: 1,
@@ -92,7 +91,6 @@ const fieldvisits = [
   const lines = new google.maps.Polyline({
     path: Coordinates,
     geodesic: true,
-   
     strokeOpacity: 0,
     icons: [
         {
@@ -106,10 +104,10 @@ const fieldvisits = [
 
   lines.setMap(map);
 
-  // Create an info window to share between markers.
+  // Create an info window to share between markers//
   const infoWindow = new InfoWindow();
 
-  // Create the markers.
+  // Create the markers//
  fieldvisits.forEach(({ position, title }, i) => {
     const pin = new PinElement({
       glyph: `${i + 1}`,
@@ -117,11 +115,12 @@ const fieldvisits = [
     const marker = new AdvancedMarkerElement({
       position,
       map,
+      
       title: `${i + 1}. ${title}`,
       content: pin.element,
     });
 
-    // Add a click listener for each marker, and set up the info window.
+    // Add a click listener for each marker, and set up the info window//
     marker.addListener("click", ({ domEvent, latLng }) => {
       const { target } = domEvent;
 
@@ -140,8 +139,7 @@ const fieldvisits = [
   <body>
     <div id="map"></div>
     
-    <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
-    <!-- *** STUDENTS: Replace YOUR_API_KEY text with provided key in class for property src in next line *** -->
+    
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCM-WWHYHIKY-do4kquMy9Z4wQaQx51AuE&callback=initMap&v=weekly" async>
     </script>
   </body>
